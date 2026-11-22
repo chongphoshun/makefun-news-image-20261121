@@ -83,6 +83,20 @@ labelled CLAIM in the image and attributed to the claimant below.
   https://gsmglobalnews.com/article/d20261120-bfrc4.html
 - Estonia to shut Russia road border from 1 Dec (decided 20 Nov, reported
   21 Nov): https://kyiv.mfa.ee/en/2026/11/foreign-minister-tsahkna-on-border-closure-russias-hostile-activities-against-estonia-and-europe-have-consequences/
+- G20 envoys agree draft leaders' declaration, drawn up without US input
+  (reported Friday 21 Nov):
+  https://trends.glance.com/story/articles/International/IN/en/cnbc-tv18/s-8a90979888-038b72df-7fc2-518b-844f-089fac9f77eb
+- AI stock sell-off pushes US shares into correction (Saturday):
+  https://oneturn.news/day/2026-11-21/
+- Bacteria-carrying mosquitoes cut dengue cases among children in Brazil
+  (reported Saturday): https://oneturn.news/day/2026-11-21/
+- Denmark expels Russian defence attaché over a "rapper assassination
+  plot" (Saturday): https://www.sevenlights.org/categories/global/
+- Drone attack sets Russian cargo ship ablaze in Gulf of Finland
+  (Saturday): https://www.sevenlights.org/categories/global/
+  and https://www.standardtopic.com/archive/world
+- Nepal PM Shah lands in Delhi for talks with Modi (Saturday):
+  https://www.standardtopic.com/archive/world
 - NATO Council to meet Monday 23 Nov on Poland:
   https://www.reuters.com/world/nato-will-defend-every-inch-polish-territory-rutte-says-2026-11-21/
 - Rahul 136, India 486-4 vs New Zealand, Wellington, close of play

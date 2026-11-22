@@ -21,9 +21,9 @@ all dated Saturday 21 November 2026**:
 - **A numbered world map** (pins 1–15), a **UTC timeline** strip (00:09 UTC
   Peru quake, 05:12 UTC aftershock, 18:24 UTC BepiColombo, late-Saturday
   COP31 text), a **BY THE NUMBERS** strip, and **22 more one-line
-  briefs** — football results, an IG Metall strike call, Sudan
-  displacement, Estonia's border shutdown, the Peru aftershock, and
-  cricket in Wellington.
+  briefs** — football results, a G20 draft declaration, an AI stock
+  sell-off, dengue mosquitoes in Brazil, an IG Metall strike call, Sudan
+  displacement, Estonia's border shutdown, and cricket in Wellington.
 - **Date discipline, printed on the page**: a DATE CHECK line states every
   story happened or was first reported on 21 November 2026, and a LEFT OUT
   line names the big stories that belong to other days (the COP31 collapse

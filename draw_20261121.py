@@ -2,7 +2,7 @@
 """Render the news-image-20261121 front page (1024x1024 PNG).
 
 Saturday 21 November 2026 in one picture: 37 dated stories, 9 regions.
-3 leads, 12 mains, 21 briefs, a numbered world map, a UTC timeline and a
+3 leads, 12 mains, 22 briefs, a numbered world map, a UTC timeline and a
 BY THE NUMBERS strip. Everything is drawn with PIL from data written in
 this file: no network, no clock, no randomness, so every run writes the
 same bytes.
@@ -95,7 +95,7 @@ MAINS = [
      "Three killed in Tel al-Hawa; truck bore a WCK logo, WCK says not its truck.",
      "MIDDLE EAST", 31.50, 34.47),
     (11, "MARKETS", "Bitcoin breaks $60,000; low $55,130",
-     "Lowest since Sep 2024, ~53% below its October peak; $1.8–2.4bn liquidated.",
+     "Lowest since Sep 2024; $1.8–2.4bn in crypto positions liquidated.",
      "GLOBAL", None, None),
     (12, "EUROPE", "France marches shrink on cost of living",
      "82,500 nationwide, 21,500 in Paris — down from 106,000 a week earlier.",
@@ -118,20 +118,20 @@ BRIEFS = [
     ("Bournemouth 2-0 Forest; ninth straight win.", 50.74, -1.83),
     ("Tottenham 2-0 Ipswich; teen Williams-Barnett scores.", 51.60, -0.07),
     ("Malen hits four as Roma rout Parma 5-1.", 44.80, 10.33),
-    ("Bayern held 1-1 by Cologne.", 48.22, 11.65),
-    ("Real Madrid fight back to beat Celta 2-1.", 40.45, -3.69),
+    ("Denmark expels Russian attaché over rapper 'assassination plot'.", 55.68, 12.57),
+    ("Drone attack sets Russian cargo ship ablaze in Gulf of Finland.", 59.95, 30.31),
     ("Boca beat Mineiro 2-0; third Copa Sudamericana title.", 10.96, -74.80),
     ("Kansas City Current win first NWSL title, 2-1.", 38.87, -77.00),
     ("Columbus Crew stun Messi's Inter Miami 3-0.", 25.76, -80.19),
     ("Hearts thrash Dundee 8-0 in Scotland.", 56.47, -2.99),
-    ("PSG beat Nice 3-2; Doué suffers knee injury.", 43.70, 7.27),
+    ("Nepal PM Shah lands in Delhi for talks with Modi.", 28.61, 77.21),
     ("IG Metall calls Monday strike; 23,000 workers, 19 firms.", 53.55, 10.00),
     ("Sudan: UN says 2,500+ displaced in West Kordofan.", 12.35, 29.25),
     ("Estonia to shut Russia road border from 1 Dec.", 59.38, 28.20),
-    ("Peru aftershock M5.0 at 05:12 UTC, Junín.", -11.16, -75.99),
-    ("NATO Council to meet Monday on Poland airspace.", 50.85, 4.35),
-    ("Mexico: $5m US reward stood behind El Chapo Isidro.", 19.43, -99.13),
-    ("Rahul 136 puts India 118 ahead of New Zealand.", -41.29, 174.78),
+    ("G20 envoys agree draft declaration without US input.", -26.20, 28.05),
+    ("AI stock sell-off pushes US shares into correction.", 40.71, -74.01),
+    ("Bacteria-carrying mosquitoes cut dengue in Brazil kids.", -15.79, -47.88),
+    ("Rahul 136 lifts India to 486-4 vs New Zealand.", -41.29, 174.78),
     ("Cyclone Xavier weakens over the Cook Islands.", -21.24, -159.77),
     ("Cricket Australia backs Cummins for NZ Tests.", -33.87, 151.21),
 ]
@@ -299,9 +299,9 @@ def build():
     seg_w = (W - 48 - 170) // 4
     for i, (val, lab) in enumerate(NUMBERS):
         x = 24 + 170 + i * seg_w
-        d.text((x, num_y + 4), val, font=F_B(19), fill=(255, 255, 255))
+        d.text((x, num_y + 2), val, font=F_B(19), fill=(255, 255, 255))
         for j, lab_line in enumerate(lab.split("\n")):
-            d.text((x, num_y + 25 + j * 10), lab_line, font=F_R(9),
+            d.text((x, num_y + 23 + j * 10), lab_line, font=F_R(9),
                    fill=(190, 200, 212))
 
     # ---- mains grid ------------------------------------------------------
@@ -352,11 +352,21 @@ def build():
             if lat is not None]
     pins += [(n, lat, lon) for (n, _k, _h, _s, _r, lat, lon) in MAINS
              if lat is not None]
+    # Pin offsets (px) for crowded spots: a leader line joins the offset
+    # pin to its true point. 2/4 (Bahrain/Riyadh), 6/7 (Kyiv/Warsaw) and
+    # 1/10 (Antalya/Gaza) would otherwise sit on top of each other; 3 is
+    # nudged onto the Peruvian coast.
+    PIN_DXDY = {2: (14, -10), 3: (5, 0), 6: (14, 6), 10: (-12, 10)}
     for n, lat, lon in pins:
         px, py = project(lon, lat)
-        d.ellipse([px - 9, py - 9, px + 9, py + 9], fill=RED,
+        dx, dy = PIN_DXDY.get(n, (0, 0))
+        cx, cy = px + dx, py + dy
+        if (dx, dy) != (0, 0):
+            d.line([px, py, cx, cy], fill=RED, width=1)
+            d.ellipse([px - 2, py - 2, px + 2, py + 2], fill=RED)
+        d.ellipse([cx - 7, cy - 7, cx + 7, cy + 7], fill=RED,
                   outline=(255, 255, 255), width=1)
-        d.text((px, py - 1), str(n), font=F_B(10), fill=(255, 255, 255),
+        d.text((cx, cy - 1), str(n), font=F_B(9), fill=(255, 255, 255),
                anchor="mm")
 
     # briefs column
